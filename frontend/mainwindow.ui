@@ -14,13 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>90</y>
-      <width>572</width>
-      <height>318</height>
+      <y>57</y>
+      <width>801</width>
+      <height>351</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">

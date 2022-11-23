@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -13,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete objectMainMenu;
+    objectMainMenu=nullptr;
 }
 
 
@@ -25,7 +28,7 @@ void MainWindow::on_btn_login_clicked()
     jsonObj.insert("card_id",card_id);
     jsonObj.insert("pin",pin);
 
-    QString site_url="http://localhost:3000/login";
+    QString site_url=myUrl::getBaseUrl()+"/login";  //getBaseUrl laitettu olioon
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
@@ -40,16 +43,31 @@ void MainWindow::loginSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
     qDebug()<<response_data;
-    /*
-    if(card_id.length()==4){
-        objectMainMenu=new main_menu_window(card_id);  //annetaan syötteeksi card_id
-        objectMainMenu->show();             //avataan main menu window
+    int test=QString::compare(response_data, "false");
+    qDebug()<<test;
 
+    if(response_data.length()==0){
+        ui->label_info->setText("Palvelin ei vastaa");
     }
     else{
-        ui->text_id->clear();
-        ui->text_pin->clear();
-        ui->label_info->setText("Eipä mennyt oikein ihan");
-    }*/
+        if(QString::compare(response_data,"-4078")==0){
+            ui->label_info->setText("Virhe tietokanta-yhteydessä");
+        }
+        else{
+            if(test==-1){
+                objectMainMenu=new main_menu_window(card_id);
+                objectMainMenu->setWebToken(response_data);
+                objectMainMenu->show();
+
+            }
+            else{
+                ui->text_id->clear();
+                ui->text_pin->clear();
+                ui->label_info->setText("Eipä mennyt oikein ihan");
+            }
+        }
+    }
+
+
 }
 

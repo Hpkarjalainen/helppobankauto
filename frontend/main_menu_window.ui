@@ -36,6 +36,58 @@
     <string>TextLabel</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btn_withdrawal">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>270</y>
+     <width>271</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Withdrawal</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_balance">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>180</y>
+     <width>271</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Check Balance</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_transactions">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>360</y>
+     <width>271</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Transactions</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_log_out">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>180</y>
+     <width>271</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Log Out</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

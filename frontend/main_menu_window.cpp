@@ -15,3 +15,20 @@ main_menu_window::~main_menu_window()
 {
     delete ui;
 }
+
+const QString &main_menu_window::getWebToken() const
+{
+    return webToken;
+}
+
+void main_menu_window::setWebToken(const QString &newWebToken)
+{
+    webToken = newWebToken;
+}
+
+void main_menu_window::on_btn_balance_clicked()
+{
+    QString wb=this->getWebToken();
+    qDebug()<<"Webtoken="+wb;
+}
+
