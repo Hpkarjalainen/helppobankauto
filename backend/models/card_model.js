@@ -5,7 +5,7 @@ const saltRounds = 10;                //kryptaus
 
 const card = {
   getById: function (id, callback) {
-    return db.query('select * from card where card_id=?', [id], callback);
+    return db.query('select * from card where card_id=?', [id], callback);  //HAETAAN CARD_ID AVULLA
   },
   getAll: function (callback) {
     return db.query('select * from card', callback);
@@ -13,8 +13,8 @@ const card = {
   add: function (add_data, callback) {
     bcrypt.hash(add_data.pin, saltRounds, function (err, hashedPassword) {        //tähän kryptifunktio
       return db.query(
-        'insert into card (user_id,cardnumber,pin,credit) values(?,?,?,?)', //ok, card_id on AI. Credit lisätty
-        [add_data.user_id, add_data.cardnumber, hashedPassword, add_data.credit],  //kryptaus: ennen kuin salasana viedään tietokantaan ,se kryptataan
+        'insert into card (account_id,card_number,pin) values(?,?,?)', //card_id on AI.
+        [add_data.account_id, add_data.card_number, hashedPassword],  //kryptaus: ennen kuin salasana viedään tietokantaan ,se kryptataan
         callback);
     });
   },
@@ -24,8 +24,8 @@ const card = {
   update: function (id, update_data, callback) {
     bcrypt.hash(update_data.pin, saltRounds, function (err, hashedPassword) {
       return db.query(
-        'update card set user_id=?,cardnumber=?, pin=?, credit=? where card_id=?',
-        [update_data.user_id, update_data.cardnumber, hashedPassword, update_data.credit, id],
+        'update card set account_id=?,card_number=?, pin=? where card_id=?',
+        [update_data.account_id, update_data.card_number, hashedPassword, id],
         callback);
     });
   },
