@@ -29,7 +29,7 @@ const card = {
         callback);
     });
   },
-  checkPassword: function(card_id,callback){  //MISSÄ KÄYTETÄÄN?, card_id muokattu
+  checkPassword: function(card_id,callback){  
     return db.query('SELECT pin FROM card WHERE card_id=?',[card_id],callback);  //muokattu pin
 },
 };
