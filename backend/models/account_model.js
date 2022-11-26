@@ -23,6 +23,9 @@ const account = {
       [account.user_id, account.account_balance, account.account_number, id],
       callback
     );
+  },
+  checkbalance: function(id, callback) {  //haetaan yhden tilin saldo, tänne card_id?
+    return db.query('SELECT account_balance FROM account INNER JOIN card ON account.account_id = card.account_id WHERE card_id=?', [id], callback);
   }
 };
 module.exports = account;

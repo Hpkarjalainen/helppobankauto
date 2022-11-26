@@ -21,14 +21,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btn_login_clicked()
 {
-    card_id=ui->text_id->text();
-    QString pin=ui->text_pin->text();
+    card_id=ui->text_id->text();        //syötetään merkit card_id kenttään
+    QString pin=ui->text_pin->text();   //syötetään merkit PIN-kenttään
 
-    QJsonObject jsonObj;
+    QJsonObject jsonObj;                //QJsonObject muuttuja jsonObj;
     jsonObj.insert("card_id",card_id);
     jsonObj.insert("pin",pin);
 
-    QString site_url=myUrl::getBaseUrl()+"/login";  //getBaseUrl laitettu olioon
+    QString site_url=myUrl::getBaseUrl()+"/login";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
@@ -56,8 +56,8 @@ void MainWindow::loginSlot(QNetworkReply *reply)
         else{
             if(test==-1){
                 objectMainMenu=new main_menu_window(card_id);
-                objectMainMenu->setWebToken(response_data);
-                objectMainMenu->show();
+                objectMainMenu->setWebToken(response_data);  //setWebToken?
+                objectMainMenu->show();  //avataan Main Menu
 
             }
             else{

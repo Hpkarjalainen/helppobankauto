@@ -1,0 +1,3 @@
+Check balance from account:
+
+SELECT account_balance FROM account INNER JOIN card ON account.account_id = card.account_id WHERE card_id=?

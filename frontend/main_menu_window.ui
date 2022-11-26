@@ -88,6 +88,24 @@
     <string>Log Out</string>
    </property>
   </widget>
+  <widget class="QLabel" name="labelInfo">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>280</y>
+     <width>391</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>26</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Info</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
